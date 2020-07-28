@@ -1,5 +1,5 @@
 # Javascript-Practice
- javascript project
+ javascript project for practice
 
-# Practice List
-1. Image slider
+// Practice List //
+    1. Image slider
