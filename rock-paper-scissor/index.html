@@ -4,42 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" />
     <title>RockScissorPaper</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Indie+Flower&display=swap" rel="stylesheet">
+    <meta author="Seung Hoon" content="Rock-scissor-paper game" />
 </head>
 
 <body>
     <header class="header">
-        <h1>Try Rock, Scirssor, Paper Game!</h1>
+        <h1>Rock, Scissor, Paper</h1>
     </header>
     <section class="game">
         <strong>Game Rule's</strong>
         <ol>
             <li>Enter the input into the input box</li>
+            <li>Put only rock, scissor or paper</li>
             <li>Check Win or Lose</li>
             <li>I'll count the number of wins and losses.</li>
         </ol>
         <form action="#" method="GET">
             <input type="text" placeholder="Enter the input" />
-            <button type="submit"></button>
+            <button type="submit">Submit</button>
         </form>
-        <p class="result"> </p>
+        <p class="result">Try me!</p>
     </section>
     <section class="counter">
-        <div class="counter_total">
+        <div class="counter_total score">
             <h3>Total games</h3>
-            <p></p>
+            <p>0</p>
         </div>
-        <div class="counter_win">
+        <div class="counter_win score">
             <h3>Win games</h3>
-            <p></p>
+            <p>0</p>
         </div>
-        <div class="counter_lose">
+        <div class="counter_lose score">
             <h3>Lose games</h3>
-            <p></p>
+            <p>0</p>
         </div>
-        <div class="counter_winRate">
+        <div class="counter_winRate score">
             <h3>Your winnig rate</h3>
-            <p></p>
+            <p>0</p>
         </div>
     </section>
     <script src="app.js"></script>
