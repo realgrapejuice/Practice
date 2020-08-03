@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <title>To-do List</title>
     <meta author="Seung Hoon" content="todo-list(using localstorage)">
 </head>
@@ -12,10 +14,10 @@
     <section class="todo_container">
         <h1 class="todo_title">Make your todo-list for better day!</h1>
         <form action="#" method="POST" class="todo_input">
-            <input type="text" placeholder="New-todo-item" />
-            <button type="submit">Save</button>
+            <input type="text" placeholder="New-todo-item" aria-label="add todo list" />
+            <button type="submit" aria-label="save todo list">Save</button>
         </form>
-        <ul class="todo_list"></ul>
+        <ul class="todo_list" aria-label="todo_list"></ul>
     </section>
     <script src="./app.js"></script>
 </body>
