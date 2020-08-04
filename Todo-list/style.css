@@ -33,12 +33,14 @@ body {
 
 button {
   font-family: "Roboto Condensed", sans-serif;
+  cursor: pointer;
 }
 
 input {
   font-family: "Roboto Condensed", sans-serif;
 }
 
+/* todo_container CSS */
 .todo_container {
   width: 90%;
   height: 90%;
@@ -69,7 +71,7 @@ input {
 .todo_input > input {
   width: 50%;
   padding: 12px 16px;
-  font-size: 16px;
+  font-size: 1.2em;
   margin-right: 10px;
   border-radius: 8px;
   background: #ffffff;
@@ -79,12 +81,17 @@ input {
 .todo_input > button {
   width: 10%;
   height: 100%;
-  font-size: 1em;
+  font-size: 1.2em;
   font-weight: 700;
   color: #ecf0f1;
   border-radius: 5px;
   background: #2980b9;
   box-shadow: inset 4px 4px 9px #236d9d, inset -4px -4px 9px #2f93d5;
+}
+
+.todo_input > button:hover {
+  background-color: rgba(41, 128, 185, 0.8);
+  transition: background-color 200ms ease-in;
 }
 
 .todo_list {
@@ -130,6 +137,11 @@ input {
   padding: 7px;
   margin-right: 8px;
   margin-bottom: 15px;
+}
+
+.todo_list > li > button:hover {
+  background-color: rgba(41, 128, 185, 0.8);
+  transition: background-color 200ms ease-in;
 }
 
 .todo_list > li > span {
