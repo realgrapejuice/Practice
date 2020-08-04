@@ -18,27 +18,32 @@ const delTodo = () => {
     return todo.id !== parseInt(li.id);
   });
   todoArray = cleanList;
+  location.reload(true);
   saveTodo();
 };
 
 const askTodo = (todo) => {
-  const li = document.createElement("li");
-  const delBtn = document.createElement("button");
-  const span = document.createElement("span");
-  const todoId = todoArray.length + 1;
-  todoUl.appendChild(li);
-  li.appendChild(delBtn);
-  li.appendChild(span);
-  li.id = todoId;
-  delBtn.innerText = "remove";
-  delBtn.addEventListener("click", delTodo);
-  span.innerText = todo;
-  todoObj = {
-    todo: todo,
-    id: todoId,
-  };
-  todoArray.push(todoObj);
-  saveTodo();
+  if (todoArray.length < 8) {
+    const li = document.createElement("li");
+    const delBtn = document.createElement("button");
+    const span = document.createElement("span");
+    const todoId = todoArray.length + 1;
+    todoUl.appendChild(li);
+    li.appendChild(delBtn);
+    li.appendChild(span);
+    li.id = todoId;
+    delBtn.innerText = "remove";
+    delBtn.addEventListener("click", delTodo);
+    span.innerText = todo;
+    todoObj = {
+      todo: todo,
+      id: todoId,
+    };
+    todoArray.push(todoObj);
+    saveTodo();
+  } else {
+    alert("What if we set priorities first?");
+  }
 };
 
 const submitEventhandler = (event) => {
