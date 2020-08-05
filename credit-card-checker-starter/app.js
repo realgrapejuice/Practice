@@ -69,8 +69,12 @@ const validateCred = (cardArr) => {
 //html section
 const submitEventHandler = (event) => {
   event.preventDefault();
-  let cardNumber = checkInput.value;
-  console.log(typeof cardNumber, cardNumber);
+  const userInput = checkInput.value;
+  const userCardNum = userInput.split("").map(function (item) {
+    return parseInt(item);
+  });
+  validateCred(userCardNum);
+  checkInput.value = "";
 };
 
 const htmlHandler = () => {
