@@ -1,7 +1,8 @@
 const section = document.querySelector(".validate_container"),
   checkForm = document.querySelector("form"),
   checkInput = checkForm.querySelector("input"),
-  checkBtn = checkForm.querySelector("button");
+  againBtn = document.querySelector(".resetBtn"),
+  checkUl = document.querySelector(".card_info");
 
 //Check company by using arr[0]
 const companyCheck = (arr) => {
@@ -10,29 +11,29 @@ const companyCheck = (arr) => {
     mastercard = "Mastercard",
     bcGlobal = "BC globalr",
     local = "Local card";
-  const p = document.createElement("p");
-  section.appendChild(p);
-  const firstNum = arr[0];
+  const li = document.createElement("li");
+  checkUl.appendChild(li);
 
+  const firstNum = arr[0];
   switch (firstNum) {
     case 3:
-      p.innerText = `Company: ${amex}`;
+      li.innerText = `Company: ${amex}`;
       console.log(`Company: ${amex}`);
       break;
     case 4:
-      p.innerText = `Company: ${visa}`;
+      li.innerText = `Company: ${visa}`;
       console.log(`Company: ${visa}`);
       break;
     case 5:
-      p.innerText = `Company: ${mastercard}`;
+      li.innerText = `Company: ${mastercard}`;
       console.log(`Company: ${mastercard}`);
       break;
     case 6:
-      p.innerText = `Company: ${bcGlobal}`;
+      li.innerText = `Company: ${bcGlobal}`;
       console.log(`Company: ${bcGlobal}`);
       break;
     case 9:
-      p.innerText = `Company: ${local}`;
+      li.innerText = `Company: ${local}`;
       console.log(`Company: ${local}`);
       break;
     default:
@@ -42,15 +43,15 @@ const companyCheck = (arr) => {
 
 //Validation using luhn algorithm
 const validateCheck = (num) => {
-  const p = document.createElement("p");
-  section.appendChild(p);
+  const li = document.createElement("li");
+  checkUl.appendChild(li);
   const isValid = num % 10 == 0 ? true : false;
   if (isValid == true) {
-    p.classList.add("valid");
-    p.innerText = `This card is valid`;
+    li.classList.add("valid");
+    li.innerText = `This card is valid`;
   } else {
-    p.classList.add("invalid");
-    p.innerText = `This card is invalid`;
+    li.classList.add("invalid");
+    li.innerText = `This card is invalid`;
   }
 };
 
@@ -85,8 +86,13 @@ const submitEventHandler = (event) => {
   const userCardNum = userInput.split("").map(function (item) {
     return parseInt(item);
   });
-  validateCred(userCardNum);
-  checkInput.value = "";
+  if (userCardNum.length !== 0) {
+    validateCred(userCardNum);
+    checkInput.value = "";
+    checkInput.placeholder = "Card Number";
+  } else {
+    checkInput.placeholder = "Please enter a number before enter";
+  }
 };
 
 const htmlHandler = () => {
