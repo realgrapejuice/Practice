@@ -1,4 +1,5 @@
-const checkForm = document.querySelector("form"),
+const section = document.querySelector(".validate_container"),
+  checkForm = document.querySelector("form"),
   checkInput = checkForm.querySelector("input"),
   checkBtn = checkForm.querySelector("button");
 
@@ -9,23 +10,29 @@ const companyCheck = (arr) => {
     mastercard = "Mastercard",
     bcGlobal = "BC globalr",
     local = "Local card";
-
+  const p = document.createElement("p");
+  section.appendChild(p);
   const firstNum = arr[0];
 
   switch (firstNum) {
     case 3:
+      p.innerText = `Company: ${amex}`;
       console.log(`Company: ${amex}`);
       break;
     case 4:
+      p.innerText = `Company: ${visa}`;
       console.log(`Company: ${visa}`);
       break;
     case 5:
+      p.innerText = `Company: ${mastercard}`;
       console.log(`Company: ${mastercard}`);
       break;
     case 6:
+      p.innerText = `Company: ${bcGlobal}`;
       console.log(`Company: ${bcGlobal}`);
       break;
     case 9:
+      p.innerText = `Company: ${local}`;
       console.log(`Company: ${local}`);
       break;
     default:
@@ -35,11 +42,16 @@ const companyCheck = (arr) => {
 
 //Validation using luhn algorithm
 const validateCheck = (num) => {
+  const p = document.createElement("p");
+  section.appendChild(p);
   const isValid = num % 10 == 0 ? true : false;
-  isValid
-    ? console.log(`This card is valid`)
-    : console.log(`This card in invalid`);
-  return isValid;
+  if (isValid == true) {
+    p.classList.add("valid");
+    p.innerText = `This card is valid`;
+  } else {
+    p.classList.add("invalid");
+    p.innerText = `This card is invalid`;
+  }
 };
 
 //result section
