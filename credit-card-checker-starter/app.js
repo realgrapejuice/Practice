@@ -1,7 +1,5 @@
-const section = document.querySelector(".validate_container"),
-  checkForm = document.querySelector("form"),
+const checkForm = document.querySelector("form"),
   checkInput = checkForm.querySelector("input"),
-  againBtn = document.querySelector(".resetBtn"),
   checkUl = document.querySelector(".card_info");
 
 //Check company by using arr[0]
@@ -13,38 +11,35 @@ const companyCheck = (arr) => {
     local = "Local card";
   const li = document.createElement("li");
   checkUl.appendChild(li);
-
+  li.classList.add("company");
   const firstNum = arr[0];
   switch (firstNum) {
     case 3:
       li.innerText = `Company: ${amex}`;
-      console.log(`Company: ${amex}`);
       break;
     case 4:
       li.innerText = `Company: ${visa}`;
-      console.log(`Company: ${visa}`);
       break;
     case 5:
       li.innerText = `Company: ${mastercard}`;
-      console.log(`Company: ${mastercard}`);
       break;
     case 6:
       li.innerText = `Company: ${bcGlobal}`;
-      console.log(`Company: ${bcGlobal}`);
       break;
     case 9:
       li.innerText = `Company: ${local}`;
-      console.log(`Company: ${local}`);
       break;
     default:
-      console.log(`Company: Cannot find`);
+      li.innerText = `Company: Cannot find`;
   }
 };
 
 //Validation using luhn algorithm
 const validateCheck = (num) => {
+  let i = 0;
   const li = document.createElement("li");
   checkUl.appendChild(li);
+  li.classList.add("validcheck");
   const isValid = num % 10 == 0 ? true : false;
   if (isValid == true) {
     li.classList.add("valid");
@@ -55,8 +50,11 @@ const validateCheck = (num) => {
   }
 };
 
-//result section
+//result
 const validateCred = (cardArr) => {
+  while (checkUl.firstChild) {
+    checkUl.removeChild(checkUl.firstChild);
+  }
   let i = 0,
     sum = 0;
   let reverseArr = cardArr.reverse(); //for luhn algorithm check
@@ -78,8 +76,7 @@ const validateCred = (cardArr) => {
   cardArr = reverseArr.reverse();
   companyCheck(cardArr);
 };
-
-//html section
+//html
 const submitEventHandler = (event) => {
   event.preventDefault();
   const userInput = checkInput.value;
@@ -95,13 +92,9 @@ const submitEventHandler = (event) => {
   }
 };
 
-const htmlHandler = () => {
-  checkForm.addEventListener("submit", submitEventHandler);
-};
-
-//print section
+//print
 const initVaildCard = () => {
-  htmlHandler();
+  checkForm.addEventListener("submit", submitEventHandler);
 };
 
 initVaildCard();
