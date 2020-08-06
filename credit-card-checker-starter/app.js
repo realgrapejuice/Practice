@@ -30,6 +30,7 @@ const companyCheck = (arr) => {
       li.innerText = `Company: ${local}`;
       break;
     default:
+      li.classList.add("unknown");
       li.innerText = `Company: Cannot find`;
   }
 };
@@ -43,10 +44,10 @@ const validateCheck = (num) => {
   const isValid = num % 10 == 0 ? true : false;
   if (isValid == true) {
     li.classList.add("valid");
-    li.innerText = `This card is valid`;
+    li.innerText = `Validation: This card is valid`;
   } else {
     li.classList.add("invalid");
-    li.innerText = `This card is invalid`;
+    li.innerText = `Validation: This card is invalid`;
   }
 };
 
