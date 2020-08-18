@@ -84,7 +84,7 @@ const getGeneralLi = (task) => {
   const span = document.createElement("span");
   const delBtn = document.createElement("button");
   span.innerText = task.task;
-  delBtn.innerText = `Delete`;
+  delBtn.innerText = ``;
   delBtn.addEventListener("click", delEventHandler);
   li.id = task.id;
   li.append(span, delBtn);
@@ -94,7 +94,7 @@ const getGeneralLi = (task) => {
 const paintPendingTask = (task) => {
   const generalLi = getGeneralLi(task);
   const doneBtn = document.createElement("button");
-  doneBtn.innerText = `Done`;
+  doneBtn.innerText = ``;
   doneBtn.addEventListener("click", doneBtnEventHandler);
   generalLi.append(doneBtn);
   taskList.append(generalLi);
@@ -103,7 +103,7 @@ const paintPendingTask = (task) => {
 const paintFinishedTask = (task) => {
   const generalLi = getGeneralLi(task);
   const backBtn = document.createElement("button");
-  backBtn.innerText = `Back`;
+  backBtn.innerText = ``;
   backBtn.addEventListener("click", backBtnEventHandler);
   generalLi.append(backBtn);
   finishList.append(generalLi);

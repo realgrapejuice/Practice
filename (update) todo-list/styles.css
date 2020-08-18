@@ -1,0 +1,205 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+input,
+button,
+form {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  border: none;
+}
+
+ul,
+li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Global CSS */
+body {
+  position: static;
+  font-family: "Roboto", "Gothic A1", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+input,
+button {
+  font-family: "Roboto", "Gothic A1", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Section CSS */
+.task_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 80%;
+  height: 80%;
+  background-color: #e5efc1;
+  border-radius: 10px;
+}
+
+/* Section > form CSS */
+.task_form {
+  position: relative;
+  width: 100%;
+}
+
+.task_form input {
+  font-size: 17px;
+  width: 400px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.task_form > form > button {
+  position: absolute;
+  top: 22px;
+  left: 360px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.task_form > form > button::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-size: 35px;
+  color: #2d3436;
+  font-weight: 900;
+  content: "\f055";
+}
+
+/* Section > clock CSS */
+.task_form .clock {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.task_form .clock p {
+  font-size: 20px;
+  color: #636e72;
+}
+
+/* task_list CSS */
+.task_list {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 100%;
+}
+
+.pending {
+  width: 70%;
+  height: 100%;
+  background-color: #a2d5ab;
+  border-bottom-left-radius: 10px;
+}
+
+.finished {
+  width: 30%;
+  height: 100%;
+  background-color: #557b83;
+  border-bottom-right-radius: 10px;
+}
+
+.task_list h3 {
+  font-size: 28px;
+  padding: 20px;
+  color: #fff;
+}
+
+.pending_list > li,
+.finished_list > li {
+  padding-left: 30px;
+  padding-bottom: 10px;
+}
+
+.pending_list > li:first-of-type,
+.finished_list > li:first-of-type {
+  padding-top: 10px;
+}
+
+.pending_list > li > span,
+.finished_list > li > span {
+  display: inline-block;
+  font-size: 22px;
+  margin-right: 8px;
+}
+
+.finished_list > li > span {
+  color: #fff;
+  opacity: 0.8;
+}
+
+.pending_list > li > button {
+  background-color: #a2d5ab;
+}
+
+.finished_list > li > button {
+  background-color: #557b83;
+}
+
+/* icon CSS */
+.pending_list > li > button:first-of-type::before,
+.finished_list > li > button:first-of-type::before,
+.pending_list > li > button:last-of-type::before,
+.finished_list > li > button:last-of-type::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.pending_list > li > button:first-of-type::before,
+.finished_list > li > button:first-of-type::before {
+  color: #ff3838;
+  content: "\f057";
+  margin-right: 5px;
+}
+
+.pending_list > li > button:last-of-type::before {
+  color: #3ae374;
+  content: "\f058";
+}
+
+.finished_list > li > button:last-of-type::before {
+  color: #0984e3;
+  content: "\f137";
+}
+
+@media screen and (max-width: 790px) {
+  .pending {
+    width: 100%;
+  }
+
+  .clock {
+    display: none;
+  }
+
+  .finished {
+    display: none;
+  }
+}

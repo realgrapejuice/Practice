@@ -1,26 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en, kr">
 
 <head>
-  <title>Parcel Sandbox</title>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://kit.fontawesome.com/2fbd8c3e62.js" crossorigin="anonymous"></script>
+  <title>To-do list</title>
+  <meta author="Seung Hoon" content="To-do List">
 </head>
 
 <body>
   <section class="task_container">
-    <h1>Task!</h1>
-    <form action="#" method="POST">
-      <input type="text" placeholder="Add Task" required>
-      <button type="submit">Submit</button>
-    </form>
+    <div class="task_form">
+      <form action="#" method="POST">
+        <input type="text" placeholder="Add Task" required>
+        <button type="submit"></button>
+      </form>
+      <div class="js-clock clock">
+        <p>00:00</p>
+      </div>
+    </div>
     <div class="task_list">
-      <h3>Pending</h3>
-      <ul class="pending_list"></ul>
-      <h3>Finished</h3>
-      <ul class="finished_list"></ul>
+      <div class="pending">
+        <h3>Today's Task</h3>
+        <ul class="pending_list"></ul>
+      </div>
+      <div class="finished">
+        <h3>Finished Task</h3>
+        <ul class="finished_list"></ul>
+      </div>
     </div>
   </section>
   <script src="./src/index.js"></script>
+  <script src="./src/clock.js"></script>
 </body>
 
 </html>
