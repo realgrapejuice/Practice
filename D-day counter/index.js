@@ -4,33 +4,30 @@ const ddForm = document.querySelector("form"),
   ddDiv = document.querySelector(".js-event_container");
 
 const END_DATE = "endDate";
-const endArray = [];
+let endArray = [];
 
-const getItemObj = (day) => {
-  return {
-    id: String(Date.now()),
-    day,
+const getDayObj = (obj) => {
+  const objId = endArray.length + 1;
+  const dayObj = {
+    id: objId,
+    day: ddEnd.value,
     desc: ddInput.value,
   };
+  return dayObj;
 };
 
-const saveItemObj = (obj) => {
+const pushObjToArray = (obj) => {
   endArray.push(obj);
 };
 
-const getDistance = () => {
-  const now = String(new Date().getTime());
-  const end = String(new Date(ddEnd.value).getTime());
-  const distance = parseInt(end) - parseInt(now);
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24)),
-    hours = Math.floor((distance / (1000 * 60 * 60)) % 24),
-    minutes = Math.floor((distance / (1000 * 60)) % 60),
-    seconds = Math.floor((distance / 1000) % 60);
-  this.p.innerText = `${days < 10 ? `0${days}` : days}D ${
-    hours < 10 ? `0${hours}` : hours
-  }H ${minutes < 10 ? `0${minutes}` : minutes}M ${
-    seconds < 10 ? `0${seconds}` : seconds
-  }S`;
+const delEventHandler = (event) => {
+  const div = event.target.parentNode;
+  div.parentNode.removeChild(div);
+  const cleanList = endArray.filter(function (obj) {
+    return obj.id !== parseInt(div.id);
+  });
+  endArray = cleanList;
+  saveState();
 };
 
 const buildGeneralDiv = (obj) => {
@@ -41,24 +38,24 @@ const buildGeneralDiv = (obj) => {
   h3.classList.add("event_title");
   h3.innerText = obj.desc;
   delBtn.innerText = `Delete`;
+  delBtn.addEventListener("click", delEventHandler);
   div.append(delBtn, h3);
   return div;
 };
 
-//setInterval를 이용해서 시간을 업데이트 하는 과정 중에 종료함(2020.08.23)
 const paintEventContainer = (obj) => {
   const generalDiv = buildGeneralDiv(obj);
   const p = document.createElement("p");
   p.classList.add("event_countInfo");
-  setInterval(function () {
+  setInterval(() => {
     const now = String(new Date().getTime());
-    const end = String(new Date(ddEnd.value).getTime());
+    const end = new Date(obj.day).getTime();
     const distance = parseInt(end) - parseInt(now);
     const days = Math.floor(distance / (1000 * 60 * 60 * 24)),
       hours = Math.floor((distance / (1000 * 60 * 60)) % 24),
       minutes = Math.floor((distance / (1000 * 60)) % 60),
       seconds = Math.floor((distance / 1000) % 60);
-    this.p.innerText = `${days < 10 ? `0${days}` : days}D ${
+    p.innerText = `${days < 10 ? `0${days}` : days}D ${
       hours < 10 ? `0${hours}` : hours
     }H ${minutes < 10 ? `0${minutes}` : minutes}M ${
       seconds < 10 ? `0${seconds}` : seconds
@@ -66,18 +63,32 @@ const paintEventContainer = (obj) => {
   }, 1000);
   generalDiv.append(p);
   ddDiv.append(generalDiv);
-  debugger;
+  pushObjToArray(obj);
 };
 
 const submitEventHandler = (event) => {
   event.preventDefault();
-  const dayObj = getItemObj();
-  setInterval(getDistance, 1000, dayObj);
+  const dayObj = getDayObj(ddInput.value);
   paintEventContainer(dayObj);
-  saveItemObj(dayObj);
+  ddEnd.value = "";
+  ddInput.value = "";
+  saveState();
+};
+
+const saveState = () => {
+  localStorage.setItem(END_DATE, JSON.stringify(endArray));
+};
+
+const loadState = () => {
+  const currentList = localStorage.getItem(END_DATE);
+  const parseList = JSON.parse(currentList);
+  parseList.forEach(function (obj) {
+    paintEventContainer(obj);
+  });
 };
 
 const init = () => {
+  loadState();
   ddForm.addEventListener("submit", submitEventHandler);
 };
 init();
