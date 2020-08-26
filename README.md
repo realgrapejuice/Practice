@@ -7,4 +7,5 @@
 3. To-do list (Using Local Storage for sustainability)
 4. Card-Number-Checker (Using Luhn algorithm to check the validation of cards)
 5. Momento application
-6. Upgrade To-do list(Using two array to save finished task and to recall this tasks and add clock) 
+6. Upgrade To-do list(Using two array to save finished task and to recall this tasks and add clock)
+7. Drawing Board(Able to draw something and save it as PNG file)
