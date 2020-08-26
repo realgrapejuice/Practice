@@ -13,11 +13,12 @@
     <canvas id="js-canvas" class="canvas"></canvas>
     <div class="color_container">
         <div class="control_range">
+            <label for="js-range">Brush Size: </label>
             <input type="range" id="js-range" min="0.1" max="5.0" value="2.5" step="0.1">
         </div>
         <div class="color_operation_btn">
             <button class="button paint" type="button">Paint</button>
-            <button class="button erase" type="button">Erase</button>
+            <button class="button clear" type="button">Clear</button>
             <button class="button save" type="button">Save</button>
         </div>
         <div class="color_item_container">
@@ -30,6 +31,7 @@
             <button type="button" class="color_item green"></button>
             <button type="button" class="color_item black"></button>
             <button type="button" class="color_item light-blue"></button>
+            <button type="button" class="color_item white"></button>
         </div>
     </div>
 </body>
