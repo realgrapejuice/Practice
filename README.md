@@ -9,3 +9,4 @@
 5. Momento application
 6. Upgrade To-do list(Using two array to save finished task and to recall this tasks and add clock)
 7. Drawing Board(Able to draw something and save it as PNG file)
+8. Browser Calculator
