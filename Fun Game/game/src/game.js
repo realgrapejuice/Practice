@@ -5,14 +5,14 @@ import Sound from "./sound.js";
 export const Reason = Object.freeze({
   win: `win`,
   lose: `lose`,
-  cancel: `cancel`
-})
+  cancel: `cancel`,
+});
 
 //Builder Pattern
 export class GameBuilder {
   gameDuration(duration) {
     this.gameDuration = duration;
-    console.log(this.gameDuration)
+    console.log(this.gameDuration);
     return this;
   }
 
@@ -31,7 +31,7 @@ export class GameBuilder {
       this.gameDuration, //
       this.carrotCount, //
       this.bugCount //
-    )
+    );
   }
 }
 
@@ -107,7 +107,7 @@ class Game {
       this.gameSound.stopBgSound();
       this.finishGame(false);
     }
-  }
+  };
 
   finishGame(win) {
     this.started = false;

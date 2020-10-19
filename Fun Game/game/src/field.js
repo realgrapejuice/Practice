@@ -2,7 +2,11 @@
 
 const CARROT_SIZE = 80;
 const FIELD_TOP_PADDING = 50;
-
+export default class Cup {
+  constructor() {
+    this.value = 80;
+  }
+}
 export default class Field {
   constructor(carrotCount, bugCount) {
     this.carrotCount = carrotCount;
