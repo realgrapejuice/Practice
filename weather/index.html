@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Weather application" content="Check today's weather'">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./src/index.js" type="module" defer></script>
+    <title>Javascript Weather App</title>
+</head>
+
+<body>
+    <section class="clock__container">
+        <h1 class="clock__clock">PM 00:00:00</h1>
+        <section class="clock__greeting">
+            <form class="greeting__form" action="#" method="GET">
+                <input class="greeting__input" type="text" placeholder="What is your name?" required>
+                <button class="greeting__btn" type="submit">Send</button>
+            </form>
+            <span class="greeting__title">Hello Hoon</span>
+        </section>
+    </section>
+    <section class="focus__container">
+        <span class="focus__question">What is your main focus for today?</span>
+        <form action="#" method="POST">
+            <input type="text">
+            <button type="submit">Add</button>
+        </form>
+    </section>
+</body>
+
+</html>
