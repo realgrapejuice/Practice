@@ -13,7 +13,7 @@
 
 <body>
     <section class="clock__container">
-        <h1 class="clock__clock">PM 00:00:00</h1>
+        <h1 class="clock__clock"></h1>
         <section class="clock__greeting">
             <form class="greeting__form" action="#" method="GET">
                 <input class="greeting__input" type="text" placeholder="What is your name?" required>
@@ -23,11 +23,13 @@
         </section>
     </section>
     <section class="focus__container">
-        <span class="focus__question">What is your main focus for today?</span>
-        <form action="#" method="POST">
-            <input type="text">
-            <button type="submit">Add</button>
-        </form>
+        <div class="focus__form--container">
+            <span class="focus__question">What is your main focus for today?</span>
+            <form class="focus__form" action="#" method="POST">
+                <input class="focus__input" type="text">
+                <button type="submit">Add</button>
+            </form>
+        </div>
     </section>
 </body>
 

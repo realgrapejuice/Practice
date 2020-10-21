@@ -72,6 +72,67 @@ body {
   font-size: calc(var(--fontsize-basic) * 4);
 }
 
-.show {
+.clock__greeting .showGreeting {
   display: block;
+}
+
+/* focus Section */
+
+.focus__question {
+  display: none;
+  font-size: calc(var(--fontsize-basic) * 2);
+  font-weight: 600;
+  margin-bottom: calc(var(--margin-basic) * 2);
+}
+
+.focus__form {
+  display: none;
+  text-align: center;
+}
+
+.focus__form input,
+.focus__form button {
+  padding: calc(var(--padding-basic) / 2);
+  font-size: var(--fontsize-basic);
+  font-weight: 600;
+}
+
+.focus__form input {
+  margin-right: calc(var(--margin-basic) / 2);
+}
+
+.focus__form button {
+  border-radius: 8px;
+  background-color: var(--color-yellow);
+}
+
+.focus__container .showFocus {
+  display: block;
+}
+
+.focus__answer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.focus__answer .focus__checkbox {
+  display: block;
+  transform: scale(2);
+  margin-right: var(--margin-basic);
+}
+
+.focus__answer .focus__item {
+  font-size: calc(var(--fontsize-basic) * 2);
+  font-weight: 600;
+  margin-right: var(--margin-basic);
+}
+
+.focus__answer .focus__clear {
+  font-size: var(--fontsize-basic);
+  font-weight: 600;
+  border-radius: 8px;
+  color: var(--color-lightgray);
+  background-color: var(--color-red);
+  padding: calc(var(--padding-basic) / 2);
 }

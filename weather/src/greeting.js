@@ -7,10 +7,11 @@ export default class Greeting {
     this.greetingTitle = document.querySelector(".greeting__title");
 
     this.USER_LS = "userName";
-    this.CLASS_SHOW = "show";
+    this.CLASS_SHOW = "showGreeting";
   }
 
   _submitEventHandler = (event) => {
+    event.preventDefault();
     const userName = this.greetingInput.value;
     this._greeting(userName);
     this._saveName(userName);
