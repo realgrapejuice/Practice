@@ -4,7 +4,7 @@ export default class Greeting {
   constructor() {
     this.greetingForm = document.querySelector(".greeting__form");
     this.greetingInput = document.querySelector(".greeting__input");
-    this.greetingTitle = document.querySelector(".greeting__title");
+    this.greetingDesc = document.querySelector(".greeting__desc");
 
     this.USER_LS = "userName";
     this.CLASS_SHOW = "showGreeting";
@@ -19,8 +19,8 @@ export default class Greeting {
 
   _greeting = (name) => {
     this.greetingForm.classList.remove(this.CLASS_SHOW);
-    this.greetingTitle.classList.add(this.CLASS_SHOW);
-    this.greetingTitle.textContent = `Hello ${name}`;
+    this.greetingDesc.classList.add(this.CLASS_SHOW);
+    this.greetingDesc.textContent = `Hello ${name}`;
   };
 
   _askName() {

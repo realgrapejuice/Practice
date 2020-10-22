@@ -14,23 +14,27 @@
 <body>
     <section class="clock__container">
         <h1 class="clock__clock"></h1>
-        <section class="clock__greeting">
-            <form class="greeting__form" action="#" method="GET">
-                <input class="greeting__input" type="text" placeholder="What is your name?" required>
-                <button class="greeting__btn" type="submit">Send</button>
-            </form>
-            <span class="greeting__title">Hello Hoon</span>
-        </section>
+    </section>
+    <section class="greeting__container">
+        <form class="greeting__form" action="#" method="GET">
+            <input class="greeting__input" type="text" placeholder="What is your name?" required>
+            <button class="greeting__btn" type="submit">Send</button>
+        </form>
+        <span class="greeting__desc">Hello Hoon</span>
     </section>
     <section class="focus__container">
-        <div class="focus__form--container">
+        <div class="focus__form--box">
             <span class="focus__question">What is your main focus for today?</span>
             <form class="focus__form" action="#" method="POST">
-                <input class="focus__input" type="text">
-                <button type="submit">Add</button>
+                <input class="focus__input" type="text" required>
+                <button class="focus__btn--submit" type="submit">Add</button>
             </form>
         </div>
+        <div class="focus__answer">
+        </div>
     </section>
+    <section class="todo__container"></section>
+    <section class="weather__container"></section>
 </body>
 
 </html>

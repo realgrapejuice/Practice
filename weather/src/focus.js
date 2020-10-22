@@ -2,62 +2,95 @@
 
 export default class Focus {
   constructor() {
-    this.focusContainer = document.querySelector(".focus__container");
-    this.focusForm = document.querySelector(".focus__form");
-    this.focusInput = document.querySelector(".focus__input");
-    this.focusItem = document.querySelector(".focus__item");
-    this.focusQuestion = document.querySelector(".focus__question");
-    this.clearBtn = document.querySelector(".focus__clear");
+    this.formBox = document.querySelector(".focus__form--box");
+    this.formForm = document.querySelector(".focus__form");
+    this.formInput = document.querySelector(".focus__input");
+    this.focusAnswer = document.querySelector(".focus__answer");
 
-    this.ITEM_LS = "focusItem";
-    this.CLASS_SHOW = "showFocus";
+    this.FOCUS_LS = "focusItem";
+    this.CLASS_FOCUS = "showFocus";
+    this.checked = false;
   }
 
   _submitEventHandler = (event) => {
     event.preventDefault();
-    const focusItem = this.focusInput.value;
+    const focusItem = this.formInput.value;
+    console.log(focusItem);
     this._showFocus(focusItem);
     this._saveFocus(focusItem);
   };
 
-  _showFocus(name) {
-    this.focusQuestion.classList.remove(this.CLASS_SHOW);
-    this.focusForm.classList.remove(this.CLASS_SHOW);
-    this.focusContainer.innerHTML = `
-    <div class="focus__answer">
-        <input type="checkbox" class="focus__checkbox" />
-        <p class="focus__item ${this.CLASS_SHOW}">${name}</p>
-        <button type="button" class="focus__clear">Clear</button>
-    </div>
-    `;
-  }
+  _inputClickEventHandler = (ptag) => {
+    if (!this.checked) {
+      this.checked = true;
+      ptag.style.textDecoration = `line-through`;
+      ptag.style.color = `f7f1e3`;
+    } else {
+      this.checked = false;
+      ptag.style.textDecoration = `none`;
+      ptag.style.color = `2c2c54`;
+    }
+  };
 
   _askFocus() {
-    this.focusQuestion.classList.add(this.CLASS_SHOW);
-    this.focusForm.classList.add(this.CLASS_SHOW);
-    this.focusForm.addEventListener("submit", this._submitEventHandler);
+    this.formBox.classList.add(this.CLASS_FOCUS);
+    this.formForm.addEventListener("submit", this._submitEventHandler);
+    this.formInput.value = ``;
+  }
+
+  _showFocus(item) {
+    this.formBox.classList.remove(this.CLASS_FOCUS);
+    this.focusAnswer.classList.add(this.CLASS_FOCUS);
+    this._makeFocusElement(item);
   }
 
   _saveFocus(item) {
-    localStorage.setItem(this.ITEM_LS, item);
+    localStorage.setItem(this.FOCUS_LS, item);
+  }
+
+  _deleteFocus() {
+    localStorage.removeItem(this.FOCUS_LS);
+  }
+
+  _resetFocus() {
+    this.focusAnswer.classList.remove(this.CLASS_FOCUS);
+    this.focusAnswer.innerHTML = ``;
+  }
+
+  _makeFocusElement(node) {
+    const input = document.createElement("input");
+    const p = document.createElement("p");
+    const button = document.createElement("button");
+    input.setAttribute("class", "answer__input");
+    input.setAttribute("type", "checkbox");
+    p.textContent = node;
+    button.setAttribute("type", "button");
+    button.textContent = `Del`;
+    this.focusAnswer.append(input, p, button);
+    input.addEventListener("click", () => {
+      if (!this.checked) {
+        this.checked = true;
+        p.style.textDecoration = `line-through`;
+        p.style.color = `#f7f1e3`;
+      } else {
+        this.checked = false;
+        p.style.textDecoration = `none`;
+        p.style.color = `#2c2c54`;
+      }
+    });
+    button.addEventListener("click", () => {
+      this._deleteFocus();
+      this._resetFocus();
+      this._askFocus();
+    });
   }
 
   loadFocus() {
-    const focusItem = localStorage.getItem(this.ITEM_LS);
+    const focusItem = localStorage.getItem(this.FOCUS_LS);
     if (focusItem === null) {
       this._askFocus();
     } else {
       this._showFocus(focusItem);
-    }
-  }
-
-  _checkboxHandler() {
-    let status = false;
-    if (!status) {
-      status = true;
-      this.focusItem.style.color = `#f7f1e3`;
-    } else {
-      status = false;
     }
   }
 }

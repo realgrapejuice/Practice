@@ -22,10 +22,12 @@ input {
   margin: 0;
   outline: none;
   border: none;
+  color: var(--color-black);
 }
 
 body {
   font-family: "Nunito", sans-serif;
+  color: var(--color-black);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,17 +36,22 @@ body {
   height: 100vh;
 }
 
+/* clock CSS */
 .clock__container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: calc(var(--margin-basic) * 3);
+  margin-bottom: calc(var(--margin-basic) * 2);
   width: 100%;
 }
 
 .clock__clock {
   font-size: calc(var(--fontsize-basic) * 5);
+}
+
+/* greeting CSS */
+.greeting__container {
   margin-bottom: calc(var(--margin-basic) * 2);
 }
 
@@ -52,87 +59,90 @@ body {
   display: none;
 }
 
-.greeting__form input,
-.greeting__form button {
-  padding: var(--padding-basic) var(--padding-basic);
+.greeting__input,
+.greeting__btn {
+  padding: calc(var(--padding-basic) * 0.8);
   font-size: calc(var(--fontsize-basic) * 2);
 }
 
-.greeting__form input {
+.greeting__input {
   margin-right: calc(var(--margin-basic) / 2);
 }
 
-.greeting__form button {
+.greeting__btn {
   border-radius: 12px;
   background-color: var(--color-yellow);
 }
 
-.greeting__title {
+.greeting__desc {
   display: none;
   font-size: calc(var(--fontsize-basic) * 4);
 }
 
-.clock__greeting .showGreeting {
+.greeting__container .showGreeting {
   display: block;
 }
 
-/* focus Section */
+/* focus CSS */
 
-.focus__question {
+.focus__form--box {
   display: none;
-  font-size: calc(var(--fontsize-basic) * 2);
-  font-weight: 600;
-  margin-bottom: calc(var(--margin-basic) * 2);
-}
-
-.focus__form {
-  display: none;
-  text-align: center;
-}
-
-.focus__form input,
-.focus__form button {
-  padding: calc(var(--padding-basic) / 2);
-  font-size: var(--fontsize-basic);
-  font-weight: 600;
-}
-
-.focus__form input {
-  margin-right: calc(var(--margin-basic) / 2);
-}
-
-.focus__form button {
-  border-radius: 8px;
-  background-color: var(--color-yellow);
-}
-
-.focus__container .showFocus {
-  display: block;
-}
-
-.focus__answer {
-  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.focus__answer .focus__checkbox {
+.focus__question {
   display: block;
+  font-size: calc(var(--fontsize-basic) * 2);
+  font-weight: 600;
+  margin-bottom: calc(var(--margin-basic) / 2);
+}
+
+.focus__input,
+.focus__btn--submit {
+  padding: calc(var(--padding-basic) * 0.8);
+  font-size: var(--fontsize-basic);
+}
+
+.focus__input {
+  font-weight: 600;
+  margin-right: calc(var(--margin-basic) / 1.5);
+}
+
+.focus__btn--submit {
+  border-radius: 8px;
+  background-color: var(--color-yellow);
+  font-size: var(--fontsize-basic);
+  font-weight: 600;
+}
+
+.focus__answer {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.focus__answer input {
   transform: scale(2);
   margin-right: var(--margin-basic);
 }
 
-.focus__answer .focus__item {
-  font-size: calc(var(--fontsize-basic) * 2);
+.focus__answer p {
+  font-size: calc(var(--fontsize-basic) * 1.5);
   font-weight: 600;
   margin-right: var(--margin-basic);
 }
 
-.focus__answer .focus__clear {
-  font-size: var(--fontsize-basic);
+.focus__answer button {
+  font-size: calc(var(--fontsize-basic) * 0.9);
   font-weight: 600;
-  border-radius: 8px;
   color: var(--color-lightgray);
   background-color: var(--color-red);
-  padding: calc(var(--padding-basic) / 2);
+  border-radius: 6px;
+  padding: calc(var(--padding-basic) * 0.5);
+}
+
+.showFocus {
+  display: flex;
 }

@@ -9,8 +9,8 @@ const greeting = new Greeting();
 const focus = new Focus();
 
 function init() {
-  focus.loadFocus();
   greeting.loadName();
+  focus.loadFocus();
   setInterval(() => {
     currentTime.updateTime();
   }, 1000);
