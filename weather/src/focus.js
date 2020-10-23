@@ -71,11 +71,11 @@ export default class Focus {
       if (!this.checked) {
         this.checked = true;
         p.style.textDecoration = `line-through`;
-        p.style.color = `#f7f1e3`;
+        p.style.color = `#aaa69d`;
       } else {
         this.checked = false;
         p.style.textDecoration = `none`;
-        p.style.color = `#2c2c54`;
+        p.style.color = `#f7f1e3`;
       }
     });
     button.addEventListener("click", () => {
