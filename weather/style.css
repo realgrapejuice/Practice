@@ -64,6 +64,7 @@ body {
 
 .greeting__input,
 .greeting__btn {
+  color: var(--color-black);
   padding: calc(var(--padding-basic) * 0.8);
   font-size: calc(var(--fontsize-basic) * 2);
 }
