@@ -26,6 +26,7 @@ input {
 }
 
 body {
+  position: relative;
   font-family: "Nunito", sans-serif;
   color: var(--color-lightgray);
   display: flex;
@@ -149,4 +150,97 @@ body {
 
 .showFocus {
   display: flex;
+}
+
+/* todo CSS */
+.todo__container {
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--color-lightgray);
+  border-radius: 12px;
+  position: absolute;
+  width: 300px;
+  height: 480px;
+  right: 20px;
+  bottom: 50px;
+}
+
+.todo__list--card {
+  width: 100%;
+}
+
+.todo__title {
+  padding: var(--padding-basic);
+  margin-bottom: var(--margin-basic);
+  border-bottom: 2px solid var(--color-yellow);
+}
+
+.todo__list--container {
+  padding-left: calc(var(--padding-basic) * 2);
+}
+
+.todo__item {
+  margin-bottom: calc(var(--margin-basic) / 1.5);
+}
+
+.todo__checkbox {
+  transform: scale(1.3);
+  margin: 0 calc(var(--margin-basic) / 2);
+}
+
+.todo__desc {
+  font-size: calc(var(--fontsize-basic) * 1.1);
+  margin-right: calc(var(--margin-basic) / 2);
+}
+
+.todo__btn {
+  font-size: var(--fontsize-basic);
+  border: 700;
+  background-color: transparent;
+}
+
+.todo__form {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: var(--padding-basic);
+}
+
+.todo__form input {
+  background-color: transparent;
+  font-weight: 600;
+  padding: calc(var(--padding-basic) / 2);
+}
+
+.todo__form button {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-black);
+  background-color: var(--color-yellow);
+  margin-right: var(--margin-basic);
+  cursor: pointer;
+}
+
+.todo__switch {
+  visibility: visible;
+  position: absolute;
+  bottom: -40px;
+  right: -10px;
+  background-color: transparent;
+  font-size: var(--fontsize-basic);
+}
+
+.todo__visible {
+  visibility: visible;
 }
