@@ -7,31 +7,34 @@ export default class Todo {
     this.todoSwitchBtn = document.querySelector(".todo__switch");
     this.todoSwitchBtn.addEventListener("click", this._visualizeTodo);
     this.todoForm = document.querySelector(".todo__form");
-    this.todoForm.addEventListener("submit", () => {
-      this._submitEventHandler();
-    });
 
     this.status = false;
     this.CLASS_VISIBLE = "todo__visible";
     this.TODO_LS = "userTodo";
-    this.USER_OBJ = {};
+    this.todoArr = [];
     this.count = 0;
   }
 
-  _loadTodo = () => {
-    const todoObj = localStorage.getItem(this.TODO_LS);
-    const fromJSONObj = JSON.parse(todoObj);
-    return fromJSONObj;
+  _saveTodo = () => {
+    localStorage.setItem(this.TODO_LS, JSON.stringify(this.todoArr));
   };
 
-  _deleteTodo = (todoObj) => {};
-
-  _saveTodo = (todoObj) => {
-    const toJSONObj = JSON.stringify(todoObj);
-    localStorage.setItem(this.TODO_LS, toJSONObj);
+  _deleteTodo = () => {
+    const li = event.target.parentNode;
+    this.count--;
+    this.ol.removeChild(li);
+    const sortedArr = this.todoArr.filter((item) => {
+      return item.id !== parseInt(li.id);
+    });
+    this.todoArr = sortedArr;
+    this._saveTodo();
   };
 
-  _makeHTML = (todoObj) => {
+  _askTodo = (userTodo) => {
+    const todoObj = {
+      id: Date.now(),
+      todo: userTodo,
+    };
     const li = document.createElement("li");
     const input = document.createElement("input");
     const span = document.createElement("span");
@@ -45,15 +48,11 @@ export default class Todo {
     button.setAttribute("class", "todo__btn");
     button.setAttribute("type", "button");
     button.textContent = `X`;
-    button.addEventListener("click", (event) => {
-      const li = event.target.parentNode;
-      this.count--;
-      if (todoObj.id === parseInt(li.id)) {
-        this.ol.removeChild(li);
-      }
-    });
+    button.addEventListener("click", this._deleteTodo);
     li.append(input, span, button);
     this.ol.append(li);
+    this.todoArr.push(todoObj);
+    this._saveTodo();
   };
 
   _submitEventHandler = () => {
@@ -66,14 +65,21 @@ export default class Todo {
     const todoInput = this.todoForm.querySelector("input");
     const userTodo = todoInput.value;
     todoInput.value = "";
-    const todoObj = {
-      id: Date.now(),
-      todo: userTodo,
-    };
-    this.USER_OBJ.id = this.count;
-    this.USER_OBJ.item = todoObj;
-    this._makeHTML(todoObj);
-    this._saveTodo(todoObj);
+    this._askTodo(userTodo);
+  };
+
+  _loadTodo = () => {
+    const currentTodo = localStorage.getItem(this.TODO_LS);
+    if (currentTodo !== null) {
+      const parsedTodo = JSON.parse(currentTodo);
+      console.log(parsedTodo);
+      parsedTodo.forEach((item) => this._askTodo(item.todo));
+    }
+  };
+
+  initTodo = () => {
+    this._loadTodo();
+    this.todoForm.addEventListener("submit", this._submitEventHandler);
   };
 
   _visualizeTodo = () => {
@@ -86,5 +92,3 @@ export default class Todo {
     }
   };
 }
-
-// 진행상황: saveTodo가 제대로 작동하도록 만들고 있는 상황, 이때 저장한 객체가 차곡차곡 쌓이지 않고, 단발적으로 로컬 스토리지에 저장되는 문제가 있는 상황임. 즉, todo 객체를 만들지 못하고 있는 상황인데, 이걸 어떻게 해결하면 좋을지에 대해 미지수임

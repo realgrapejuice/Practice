@@ -20,18 +20,6 @@ export default class Focus {
     this._saveFocus(focusItem);
   };
 
-  _inputClickEventHandler = (ptag) => {
-    if (!this.checked) {
-      this.checked = true;
-      ptag.style.textDecoration = `line-through`;
-      ptag.style.color = `f7f1e3`;
-    } else {
-      this.checked = false;
-      ptag.style.textDecoration = `none`;
-      ptag.style.color = `2c2c54`;
-    }
-  };
-
   _askFocus() {
     this.formBox.classList.add(this.CLASS_FOCUS);
     this.formForm.addEventListener("submit", this._submitEventHandler);

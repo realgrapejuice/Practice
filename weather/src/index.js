@@ -16,6 +16,7 @@ function init() {
   background.getBackgroundImg();
   greeting.loadName();
   focus.loadFocus();
+  todo.initTodo();
   setInterval(() => {
     currentTime.updateTime();
   }, 1000);

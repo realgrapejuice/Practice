@@ -70,6 +70,7 @@ body {
 }
 
 .greeting__input {
+  border-radius: 12px;
   margin-right: calc(var(--margin-basic) / 2);
 }
 
