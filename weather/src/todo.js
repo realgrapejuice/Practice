@@ -8,7 +8,7 @@ export default class Todo {
     this.todoSwitchBtn.addEventListener("click", this._visualizeTodo);
     this.todoForm = document.querySelector(".todo__form");
 
-    this.status = false;
+    this.checked = false;
     this.CLASS_VISIBLE = "todo__visible";
     this.TODO_LS = "userTodo";
     this.todoArr = [];
@@ -19,7 +19,7 @@ export default class Todo {
     localStorage.setItem(this.TODO_LS, JSON.stringify(this.todoArr));
   };
 
-  _deleteTodo = () => {
+  _deleteTodo = (event) => {
     const li = event.target.parentNode;
     this.count--;
     this.ol.removeChild(li);
@@ -27,7 +27,22 @@ export default class Todo {
       return item.id !== parseInt(li.id);
     });
     this.todoArr = sortedArr;
+    this.checked = false;
     this._saveTodo();
+  };
+
+  _checkDoneTodo = (event) => {
+    const li = event.target.parentNode;
+    if (!this.checked) {
+      this.checked = true;
+      li.style.textDecoration = `line-through`;
+      li.style.color = `#aaa69d`;
+    } else {
+      this.checked = false;
+      li.style.textDecoration = `none`;
+      li.style.color = `#f7f1e3`;
+    }
+    console.log(this.checked);
   };
 
   _askTodo = (userTodo) => {
@@ -49,6 +64,7 @@ export default class Todo {
     button.setAttribute("type", "button");
     button.textContent = `X`;
     button.addEventListener("click", this._deleteTodo);
+    input.addEventListener("click", this._checkDoneTodo);
     li.append(input, span, button);
     this.ol.append(li);
     this.todoArr.push(todoObj);
@@ -72,13 +88,13 @@ export default class Todo {
     const currentTodo = localStorage.getItem(this.TODO_LS);
     if (currentTodo !== null) {
       const parsedTodo = JSON.parse(currentTodo);
-      console.log(parsedTodo);
       parsedTodo.forEach((item) => this._askTodo(item.todo));
     }
   };
 
   initTodo = () => {
     this._loadTodo();
+    console.log(this.checked);
     this.todoForm.addEventListener("submit", this._submitEventHandler);
   };
 
