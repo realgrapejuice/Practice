@@ -42,7 +42,6 @@ export default class Todo {
       li.style.textDecoration = `none`;
       li.style.color = `#f7f1e3`;
     }
-    console.log(this.checked);
   };
 
   _askTodo = (userTodo) => {
@@ -94,7 +93,6 @@ export default class Todo {
 
   initTodo = () => {
     this._loadTodo();
-    console.log(this.checked);
     this.todoForm.addEventListener("submit", this._submitEventHandler);
   };
 
