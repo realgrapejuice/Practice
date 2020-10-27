@@ -15,14 +15,14 @@ const todo = new Todo();
 const weather = new Weather();
 
 function init() {
+  setInterval(() => {
+    currentTime.updateTime();
+  }, 1000);
   background.getBackgroundImg();
   greeting.loadName();
   focus.loadFocus();
   todo.initTodo();
   weather.loadCoords();
-  setInterval(() => {
-    currentTime.updateTime();
-  }, 1000);
 }
 
 init();

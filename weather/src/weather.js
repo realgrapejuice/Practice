@@ -10,20 +10,24 @@ export default class Weather {
 
   getWeather(lat, lon) {
     const p = document.createElement("p");
-    this.weather.append(p);
+    const img = document.createElement("img");
+    this.weather.append(img, p);
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this.API_KEYS}&units=metric`
     )
       .then((resolve) => resolve.json()) //
       .then((json) => {
         const climate = json.weather[0].main;
-        const temperature = json.main.temp;
+        const icon = `http://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`;
+        const temperature = Math.round(json.main.temp);
         const currentLocation = json.name;
-        p.textContent = `${climate}, ${temperature}, ${currentLocation}`;
+        img.setAttribute("class", "weather__icon");
+        img.setAttribute("src", icon);
+        p.textContent = `${climate}, ${temperature}°C, ${currentLocation}`;
       });
   }
 
-  savePosition = (obj) => {
+  saveCoords = (obj) => {
     localStorage.setItem(this.COORDS, JSON.stringify(obj));
   };
 
@@ -34,7 +38,7 @@ export default class Weather {
       latitude,
       longitude,
     };
-    this.savePosition(positionObj);
+    this.saveCoords(positionObj);
     this.getWeather(latitude, longitude);
   };
 
@@ -48,8 +52,6 @@ export default class Weather {
       this.handleError
     );
   }
-
-  toggleWeatherIcon(climate) {}
 
   loadCoords() {
     const currentCoords = localStorage.getItem(this.COORDS);
